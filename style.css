@@ -1,0 +1,630 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.stars, .twinkling {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.stars {
+    background: #000 url('https://i.imgur.com/YKY28eT.png') repeat top center;
+    z-index: -2;
+}
+
+.twinkling {
+    background: transparent url('https://i.imgur.com/XYMF4ca.png') repeat top center;
+    z-index: -1;
+    animation: move-twink-back 200s linear infinite;
+}
+
+@keyframes move-twink-back {
+    from {background-position: 0 0;}
+    to {background-position: -10000px 5000px;}
+}
+
+header {
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+}
+
+.title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem;
+    color: #ff69b4;
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(255, 105, 180, 0.8),
+                     0 0 30px rgba(255, 105, 180, 0.6);
+    }
+}
+
+.floating-hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+section {
+    margin-bottom: 4rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: #ff69b4;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.content-box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+p {
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.personality-traits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.trait {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.trait:hover {
+    transform: translateY(-5px);
+}
+
+.trait i {
+    font-size: 2rem;
+    color: #ff69b4;
+    margin-bottom: 0.5rem;
+}
+
+.eyes-animation {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.eye {
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.eye::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #1a1a2e;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: look 3s infinite;
+}
+
+@keyframes look {
+    0%, 100% { transform: translate(-50%, -50%); }
+    25% { transform: translate(-30%, -50%); }
+    75% { transform: translate(-70%, -50%); }
+}
+
+.wishes-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.wish {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.wish:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.wish i {
+    font-size: 2rem;
+    color: #ff69b4;
+    margin-bottom: 1rem;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.3);
+    margin-top: 4rem;
+}
+
+footer p {
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 3rem;
+    }
+    
+    .content-box {
+        padding: 1.5rem;
+    }
+    
+    .eye {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .eye::after {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Cake Animation */
+.cake-animation {
+    position: relative;
+    height: 150px;
+    margin: 2rem auto;
+    perspective: 1000px;
+}
+
+.cake {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
+    border-radius: 10px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: cake-float 3s ease-in-out infinite;
+    margin: 0 auto;
+}
+
+.cake::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    background: #fff;
+    bottom: 0;
+    border-radius: 0 0 10px 10px;
+}
+
+.candle {
+    width: 10px;
+    height: 30px;
+    background: #fff;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+}
+
+.candle::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #ffd700;
+    border-radius: 50%;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 20px #ffd700;
+    animation: flicker 1s ease-in-out infinite alternate;
+}
+
+@keyframes cake-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes flicker {
+    0%, 100% { transform: translateX(-50%) scale(1); opacity: 1; }
+    50% { transform: translateX(-50%) scale(0.8); opacity: 0.8; }
+}
+
+/* Eye Quotes */
+.eye-quotes {
+    text-align: center;
+    margin-top: 2rem;
+    font-style: italic;
+    color: #ff69b4;
+}
+
+.quote {
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+}
+
+/* Fun Facts Section */
+.fun-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.fact {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.fact:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.fact i {
+    font-size: 2rem;
+    color: #ff69b4;
+    margin-bottom: 1rem;
+}
+
+/* Tease Section */
+.tease-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.tease-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.tease-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 105, 180, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.tease-item:hover::before {
+    transform: translateX(100%);
+}
+
+.tease-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.tease-item i {
+    font-size: 2rem;
+    color: #ff69b4;
+    margin-bottom: 1rem;
+}
+
+/* Message Section */
+.message-content {
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+}
+
+.message-content::before,
+.message-content::after {
+    content: '"';
+    font-size: 4rem;
+    color: #ff69b4;
+    position: absolute;
+    opacity: 0.3;
+}
+
+.message-content::before {
+    top: 0;
+    left: 0;
+}
+
+.message-content::after {
+    bottom: 0;
+    right: 0;
+}
+
+.signature {
+    margin-top: 2rem;
+    font-style: italic;
+    color: #ff69b4;
+}
+
+/* Footer Hearts */
+.footer-hearts {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    animation: heart-beat 1s ease-in-out infinite;
+}
+
+@keyframes heart-beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Responsive Design Updates */
+@media (max-width: 768px) {
+    .fun-facts,
+    .tease-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .message-content {
+        padding: 1rem;
+    }
+    
+    .message-content::before,
+    .message-content::after {
+        font-size: 3rem;
+    }
+}
+
+/* Playful Tease Section */
+.tease-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.tease-card {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.tease-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.tease-card:hover::before {
+    opacity: 0.1;
+}
+
+.tease-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+}
+
+.tease-card i {
+    font-size: 2.5rem;
+    color: #ff69b4;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.tease-card p {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+}
+
+/* Nicknames Section */
+.nicknames-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.nickname-card {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.nickname-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.nickname-card:hover::before {
+    opacity: 0.1;
+}
+
+.nickname-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+}
+
+.nickname-card i {
+    font-size: 2.5rem;
+    color: #ff69b4;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.nickname-card:hover i {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.nickname-card p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ff69b4;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.nickname-desc {
+    display: block;
+    font-size: 0.9rem;
+    color: #fff;
+    opacity: 0.8;
+    position: relative;
+    z-index: 1;
+}
+
+/* Nickname Message Popup */
+.nickname-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background: rgba(26, 26, 46, 0.95);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    border: 2px solid #ff69b4;
+    max-width: 90%;
+    width: 400px;
+    text-align: center;
+}
+
+.nickname-message.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.nickname-message p {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.nickname-message .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #ff69b4;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.3s ease;
+}
+
+.nickname-message .close-btn:hover {
+    transform: rotate(90deg);
+}
+
+/* Responsive Design Updates */
+@media (max-width: 768px) {
+    .nicknames-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .nickname-message {
+        width: 90%;
+        padding: 1.5rem;
+    }
+} 
